@@ -1,0 +1,15 @@
+@use "../variables";
+@use "../utils";
+
+.footer {
+    display: flex;
+    justify-content: center;
+    width: 100dvw;
+    height: utils.rem(32);
+    position: absolute;
+    bottom: 0;
+    @include variables.text_font;
+    @include utils.fluid-text(16, 14);
+    color: variables.$background_color;
+    background-color: variables.$main_color;
+}

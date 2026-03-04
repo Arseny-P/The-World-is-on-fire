@@ -1,0 +1,10 @@
+@use "globals";
+@use "variables";
+
+@use "./components/article";
+@use "./components/header";
+@use "./components/footer";
+@use "./components/filters";
+@use "./components/loader";
+@use "./UI/ThemeToggle";
+@use "./components/search";

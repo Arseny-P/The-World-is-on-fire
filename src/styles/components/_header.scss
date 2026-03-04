@@ -1,0 +1,22 @@
+@use "../utils";
+@use "../variables";
+
+.header {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: utils.rem(20);
+    }
+
+    &__content {
+        @include variables.title_font;
+        @include utils.fluid-text(72, 48);
+        text-decoration: none;
+        color: variables.$main_color;
+        transition: color 0.2s ease-out;
+        &:hover {
+            color: variables.$accent_color;
+        }
+    }
+}

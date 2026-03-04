@@ -1,0 +1,30 @@
+@use "../utils";
+@use "../variables";
+
+.search__container {
+    display: flex;
+    align-items: center;
+    height: auto;
+    position: relative;
+    margin-bottom: utils.rem(16);
+    width: calc(utils.rem(16) * 20);
+}
+
+.search__input {
+    border: 2px solid variables.$main_color;
+    width: 100%;
+    border-radius: utils.rem(8);
+    padding: utils.rem(4);
+    background-color: variables.$background_color;
+    @include variables.second_text_font;
+    @include utils.fluid-text(14, 12);
+    color: variables.$main_color;
+}
+
+.search__icon {
+    position: absolute;
+    right: 5px;
+    width: utils.rem(20);
+    height: utils.rem(20);
+}
+

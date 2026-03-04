@@ -1,0 +1,23 @@
+@use "../utils";
+@use "../variables";
+
+.filter-container {
+    display: flex;
+    gap: utils.rem(32);
+}
+
+.filter {
+    border: 2px solid variables.$main_color;
+    border-radius: utils.rem(8);
+    padding: utils.rem(4);
+    background-color: variables.$background_color;
+    @include variables.second_text_font;
+    @include utils.fluid-text(14, 12);
+    color: variables.$main_color;
+}
+
+.filter__option {
+    @include variables.second_text_font;
+    @include utils.fluid-text(14, 12);
+    color: variables.$main_color;
+}

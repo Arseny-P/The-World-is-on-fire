@@ -1,0 +1,66 @@
+@use "../utils";
+@use "../variables";
+
+.article {
+    display: flex;
+    align-items: center;
+    max-width: utils.rem(800);
+    width: 95%;
+    margin: 0 auto;
+    animation: appearance 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0ms forwards;
+
+    &__image {
+        height: utils.rem(250);
+        width: utils.rem(350);
+        position: relative;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-items: center;
+        padding: utils.rem(24);
+    }
+
+    &__author {
+        @include variables.text_font;
+        @include utils.fluid-text(14, 12);
+        color: variables.$main_color;
+    }
+
+    &__title {
+        @include variables.header_font;
+        @include utils.fluid-text(24, 16);
+        color: variables.$main_color;
+    }
+
+    &__desc {
+        @include variables.text_font;
+        @include utils.fluid-text(16, 14);
+        color: variables.$main_color;
+    }
+
+    &__link {
+        @include variables.second_text_font;
+        text-decoration: none;
+        color: variables.$main_color;
+        transition: color 0.05s ease-out;
+
+        &:hover {
+            color: variables.$accent_color;
+        }
+    }
+}
+
+@keyframes appearance {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
