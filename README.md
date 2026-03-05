@@ -1,73 +1,22 @@
-# React + TypeScript + Vite
+# The world is on fire
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="https://i.giphy.com/kspVl6FzbdblOMKRmM.webp" width="240" height="135" alt="gif I'm fine"/>
 
-Currently, two official plugins are available:
+Бесконечная лента новостей для думскроллинга. Проект создан для отработки React и типизации данных с использованием TypeScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Стек технологий
 
-## React Compiler
+* **Основа:** React, TypeScript, Vite
+* **Работа с сетью:** Axios, NewsAPI *(в скором времени будет заменено из-за ограничений бесплатной версии для публичных сайтов)*
+* **Стилизация:** SCSS (с использованием CSS-переменных)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Основные возможности
 
-## Expanding the ESLint configuration
+* **Бесконечная прокрутка:** Реализована с помощью `IntersectionObserver`;
+* **Поиск:** поиск по ключевым словам в новостях;
+* **Фильтрация:** Возможность выбора новостей по странам и категориям;
+* **Интерфейс:** Полная адаптивность под мобильные телефоны и ПК. Добавлена смена светлой/темной темы (выбор сохраняется в памяти браузера).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Проблемы при разработке
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Оптимизация поисковой строки:** Чтобы избежать отправки лишних запросов к API была написана простая функция задержки через useRef ожидающая немного времени после конца ввода перед отправкой запроса.

@@ -13,7 +13,7 @@ type postListType = {
 }
 
 function createUrl(country: string, category: string, page: number, query: string) {
-  return "https://newsapi.org/v2/top-headlines?" + `country=${country}&` + `category=${category}&` + `pageSize=20&` + `page=${page}&` + (query !== "" ? `q=${query}&` : "") + API_KEY
+  return "https://newsapi.org/v2/top-headlines?" + `country=${country}&` + `category=${category}&` + `pageSize=40&` + `page=${page}&` + (query !== "" ? `q=${query}&` : "") + API_KEY
 }
 
 const PostList = ({country, category, query}: postListType): React.JSX.Element => {
