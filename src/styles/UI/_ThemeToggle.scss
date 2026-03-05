@@ -48,3 +48,9 @@
     transform: translateX(calc(utils.rem(60) - 12px - utils.rem(20)));
     right: 5px;
 }
+
+@media (max-width: 750px) {
+    .theme-toggle {
+        display: none;
+    }
+}

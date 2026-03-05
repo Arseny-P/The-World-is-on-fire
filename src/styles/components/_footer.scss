@@ -4,10 +4,10 @@
 .footer {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 100dvw;
     height: utils.rem(32);
-    position: absolute;
-    bottom: 0;
+    bottom: 0px;
     @include variables.text_font;
     @include utils.fluid-text(16, 14);
     color: variables.$background_color;

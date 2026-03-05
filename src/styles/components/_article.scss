@@ -7,7 +7,7 @@
     max-width: utils.rem(800);
     width: 95%;
     margin: 0 auto;
-    animation: appearance 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0ms forwards;
+    animation: appearance 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0ms forwards;
 
     &__image {
         height: utils.rem(250);
@@ -43,6 +43,8 @@
 
     &__link {
         @include variables.second_text_font;
+        font-weight: bold;
+        @include utils.fluid-text(20, 16);
         text-decoration: none;
         color: variables.$main_color;
         transition: color 0.05s ease-out;
@@ -62,5 +64,17 @@
     100% {
         opacity: 1;
         transform: translateX(0px);
+    }
+}
+
+@media (max-width: 810px) {
+    .article {
+        flex-direction: column;
+        margin: utils.rem(8) auto;
+
+        &__content {
+            padding: utils.rem(16);
+            border-bottom: 1px solid #e2dcdc;
+        }
     }
 }

@@ -4,8 +4,8 @@ type selectType = {
     name: string,
   }[],
   defaultValue: string,
-  value: any,
-  onChange: any
+  value: string | number,
+  onChange: (val: string) => void,
 }
 
 const MySelect = ({options, defaultValue, value, onChange}: selectType) => {

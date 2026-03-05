@@ -37,3 +37,10 @@ $accent_color: #ff8000;
     font-weight: 300;
     font-style: normal;
 }
+
+@media (max-width: 750px) and (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #141414;
+        --main-color: #e2dcdc;
+    }
+}

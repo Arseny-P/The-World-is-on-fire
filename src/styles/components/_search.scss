@@ -6,23 +6,32 @@
     align-items: center;
     height: auto;
     position: relative;
-    margin-bottom: utils.rem(16);
-    width: calc(utils.rem(16) * 20);
+    margin-bottom: utils.rem(16);;
+    border-radius: utils.rem(8);
+    border: 2px solid variables.$main_color;
+    max-width: utils.rem(350);
+    width: 100%;
+    &:has(.search__input:focus) {
+        outline: blue auto 1px;
+    }
 }
 
 .search__input {
-    border: 2px solid variables.$main_color;
     width: 100%;
+    border: 0;
     border-radius: utils.rem(8);
     padding: utils.rem(4);
     background-color: variables.$background_color;
     @include variables.second_text_font;
     @include utils.fluid-text(14, 12);
     color: variables.$main_color;
+    &:focus {
+        outline: 0px;
+    }
 }
 
 .search__icon {
-    position: absolute;
+    position: relative;
     right: 5px;
     width: utils.rem(20);
     height: utils.rem(20);

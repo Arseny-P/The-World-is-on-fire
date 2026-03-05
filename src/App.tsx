@@ -50,7 +50,7 @@ function App() {
         <PostList country={country} category={category} query={query}/>
       </main>
       <footer className="footer">
-        You never see this LOL! Stop, how you can read it?
+        We have a problem with the news, if you see this, sorry
       </footer>
     </div>
   )

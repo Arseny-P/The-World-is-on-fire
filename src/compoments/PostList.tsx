@@ -6,25 +6,14 @@ import Loader from './UI/Loader/Loader';
 
 let API_KEY: string = "apiKey=162dca05c86646d5be3a279d279d44dc";
 
-// DONE:
-// Добавить возможность фильтра по категории
-// Добавить возможность выбора страны
-// добавить темную тему
-
-// NEED TO TEST
-// Добавить плавную анимацию появления новостей
-
-// IN PROGRESS
-// Добавить поиск по новостям
-
-// TO DO:
-// добавить добавить возможность сохранять какие то новости (типа избранного)
-// сделать все это адаптивным
-
 type postListType = {
   country: string,
   category: string,
   query: string
+}
+
+function createUrl(country: string, category: string, page: number, query: string) {
+  return "https://newsapi.org/v2/top-headlines?" + `country=${country}&` + `category=${category}&` + `pageSize=20&` + `page=${page}&` + (query !== "" ? `q=${query}&` : "") + API_KEY
 }
 
 const PostList = ({country, category, query}: postListType): React.JSX.Element => {
@@ -33,28 +22,50 @@ const PostList = ({country, category, query}: postListType): React.JSX.Element =
   const mark = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState<number>(1);
 
+  let URL = createUrl(country, category, page, query);
+
   useEffect(() => {
-    let URL = "https://newsapi.org/v2/top-headlines?" + `country=${country}&` + `category=${category}&` + `pageSize=50&` + `page=${page}&` + (query !== "" ? `q=${query}&` : "") + API_KEY;
     const fetchPosts = async () => {
       if (isLoading) return;
       setIsLoading(true);
 
       try {
         const response = await axios.get(URL);
-        setPage(page + 1);
         setPostsList([...postsList ,...response.data.articles]);
         setIsLoading(false);
       } catch (error) {
         console.error("ERROR:", error);
       }
-    };
+    }
 
+    fetchPosts();
+  }, [page])
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      if (isLoading) return;
+      setIsLoading(true);
+
+      try {
+        const response = await axios.get(URL);
+        setPostsList([...response.data.articles]);
+        setPage(1);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("ERROR:", error);
+      }
+    }
+
+    fetchPosts();
+  }, [country, category, query])
+
+  useEffect(() => {
     const currentMark = mark.current;
     if (!currentMark) return;
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !isLoading) {
-        fetchPosts();
+        setPage(page + 1);
       }
     }, {
       rootMargin: '50px',
@@ -64,7 +75,7 @@ const PostList = ({country, category, query}: postListType): React.JSX.Element =
     return () => {
       if (currentMark) observer.unobserve(currentMark);
     };
-  }, [page, isLoading, country, category, query]);
+  }, [isLoading]);
 
   return (
     <div className="postLists">
